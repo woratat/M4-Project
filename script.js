@@ -14,9 +14,9 @@ window.addEventListener('load',(e)=>{
         const search = document.getElementById('search').value
         getAllMovie(search)
         console.log(search)
+        document.getElementById('search_form').reset()
     })
 })
-
 function getAllMovie(search){
     fetch(`https://api.jikan.moe/v3/search/anime?q=${search}`, {
         method: 'GET'
@@ -26,11 +26,9 @@ function getAllMovie(search){
         }
     }).then((data) => {
         showMovie(data.results);
-    console.log('this is getAllMovie')
     })
 }
 function showMovie(data){
-    console.log('this is showMovie')
     for(movie of data){
         showCard(movie)
     }
@@ -48,7 +46,7 @@ function showCard(movie){
         console.log(movie.title)
         let confirmMsg = confirm(`ต้องการเพิ่ม ${movie.title}ใช่ไหม`)
         if(confirmMsg){
-
+            addMovie(movie)
         }
     })
     let img = document.createElement('img')
@@ -67,8 +65,50 @@ function showCard(movie){
     card.appendChild(img)
     card.appendChild(card_body)
     search_results.appendChild(card)
-    console.log('this is the end')
 }
+function addMovie(data) {
+    let myMovie = {
+        id: "632110352",
+        movie: {
+            url: data.url,
+            image_url: data.image_url,
+            title: data.title,
+            synopsis: data.synopsis,
+            type: data.type,
+            episodes: data.episodes,
+            score: data.score,
+            rated: data.rated
+        }
+    }
+        addMyList(myMovie)
+}
+function addMyList(myMovie){
+    fetch(`https://se104-project-backend.du.r.appspot.com/movies`,{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(myMovie)
+    }).then(response =>{
+        if(response.status === 200){
+            console.log('เข้า')
+            return response.json()
+        }else{
+            throw Error(response.statusText)
+        }
+    }).then(data=>{
+        alert(`${data.title} is now in your list.`)
+    }).catch(error=>{
+        return null
+    })
+}
+document.getElementById('MyList').addEventListener('click',(e)=>{
+    display()
+})
+function display(){
+    
+}
+
 // document.getElementById()
 // function getOneCard(id){
 //     fetch(`https://api.jikan.moe/v3/anime/${id}`, {
