@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Movie Site</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">Movie Finder</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      
+          <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="index.html">Home
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">List</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Search</a>
+              </li>
+            </ul>
+            <form class="d-flex" id="search_form">
+              <input class="form-control me-sm-2" type="text" placeholder="Search" id="search">
+              <button class="btn btn-secondary my-2 my-sm-0" type="submit" id="searchButton">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+    <div class="container" id="search-results">
+        
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="px-3 m-5" id="displayStudent">
+                        <div class="row">
+                            <div class="col-3"><b>Id:</b></div>
+                            <div class="col-3" id="id"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3"><b>Title:</b></div>
+                            <div class="col-3" id="title"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3"><b>Type:</b></div>
+                            <div class="col-3" id="type"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3"><b>Episodes:</b></div>
+                            <div class="col-3" id="episodes"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3"><b>Score:</b></div>
+                            <div class="col-3" id="score"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3"><b>Rated:</b></div>
+                            <div class="col-3" id="rated"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3"><b>Image:</b></div>
+                            <div class="col">
+                                <img src="" alt="image" id="image" style="width: 304px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
+
+
+
+
+    <!-- <div class="container">
+        <div class="card text-white bg-dark mb-3 mt-4" style="max-width: 20rem;" id="display">
+            <div class="card-header">Header</div>
+            <div class="card-body">
+                <h4 class="card-title"  id="title">Dark card title</h4>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                    content.</p>
+            </div>
+            <div class="card-footer">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">More info...</a>
+            </div>
+        </div>
+
+        
+    </div> -->

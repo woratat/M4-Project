@@ -1,0 +1,21 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    /* background-color: #040f0f; */
+    /* color: white; */
+}
+a{
+    text-decoration: none;
+}
+body > nav > div > div > a{
+    color: #EEC643;
+}
+#exampleModal > div > div > div.modal-header,  div.modal-body{
+    color: black;
+}
+#search-results{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
