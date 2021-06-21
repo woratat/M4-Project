@@ -17,11 +17,6 @@ window.addEventListener('load',(e)=>{
     })
 })
 
-// searchButton.addEventListener('click', (e)=>{
-//     const search = document.getElementById('search').value
-//     getAllMovie(search)
-//     console.log(search)
-// })
 function getAllMovie(search){
     fetch(`https://api.jikan.moe/v3/search/anime?q=${search}`, {
         method: 'GET'
@@ -48,6 +43,14 @@ function showCard(movie){
     card.classList.add('mt-3')
     card.classList.add('mx-3')
     card.setAttribute('style','width: 18rem;')
+    card.setAttribute('id',movie.mal_id)
+    card.addEventListener('dblclick',(event)=>{
+        console.log(movie.title)
+        let confirmMsg = confirm(`ต้องการเพิ่ม ${movie.title}ใช่ไหม`)
+        if(confirmMsg){
+
+        }
+    })
     let img = document.createElement('img')
     img.setAttribute('src',movie.image_url)
     img.classList.add('card-img-top')
@@ -59,26 +62,14 @@ function showCard(movie){
     let synop = document.createElement('p')
     synop.classList.add('card-text')
     synop.innerHTML = movie.synopsis
-    let more = document.createElement('a')
-    more.setAttribute('href','#')
-    more.classList.add('btn')
-    more.classList.add('text-danger')
-    more.classList.add('btn-dark')
-    // more.setAttribute('data-bs-toggle','modal')
-    // more.setAttribute('data-bs-target','#exampleModal')
-    more.innerText = 'Add to list'
-    // more.addEventListener('click',(event)=>{
-    //     console.log('click more'+movie.mal_id)
-    //     getOneCard(movie.mal_id)
-    // })
     card_body.appendChild(title)
     card_body.appendChild(synop)
-    card_body.appendChild(more)
     card.appendChild(img)
     card.appendChild(card_body)
     search_results.appendChild(card)
     console.log('this is the end')
 }
+// document.getElementById()
 // function getOneCard(id){
 //     fetch(`https://api.jikan.moe/v3/anime/${id}`, {
 //         method: 'GET'
