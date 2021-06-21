@@ -14,15 +14,19 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="index.html">Movie Finder</a>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-camera-reels" viewBox="0 0 16 16">
+                <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM1 3a2 2 0 1 0 4 0 2 2 0 0 0-4 0z"/>
+                <path d="M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h7zm6 8.73V7.27l-3.5 1.555v4.35l3.5 1.556zM1 8v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1z"/>
+                <path d="M9 6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM7 3a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+              </svg>
+          <a class="navbar-brand mx-1" href="index.html">Movie <span style="color: tomato;">Finder</span></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-      
           <div class="collapse navbar-collapse" id="navbarColor02">
             <ul class="navbar-nav me-auto">
               <li class="nav-item">
-                <a class="nav-link active" href="index.html">Home
+                <a class="nav-link" href="index.html">Home
                 </a>
               </li>
               <li class="nav-item">
@@ -41,7 +45,11 @@
         
     </div>
 
-    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="container" id="displayMyMovie">
+
+    </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -49,14 +57,14 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="px-3 m-5" id="displayStudent">
-                        <div class="row">
-                            <div class="col-3"><b>Id:</b></div>
-                            <div class="col-3" id="id"></div>
-                        </div>
+                    <div class="px-3 m-5" id="displayModal">
                         <div class="row">
                             <div class="col-3"><b>Title:</b></div>
-                            <div class="col-3" id="title"></div>
+                            <div class="col" id="title"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3"><b>Synopsis:</b></div>
+                            <div class="col" id="synopsis"></div>
                         </div>
                         <div class="row">
                             <div class="col-3"><b>Type:</b></div>
@@ -76,7 +84,7 @@
                         </div>
                         <div class="row">
                             <div class="col-3"><b>Image:</b></div>
-                            <div class="col">
+                            <div class="col mt-2">
                                 <img src="" alt="image" id="image" style="width: 304px;">
                             </div>
                         </div>
@@ -84,18 +92,14 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Add to list</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="deleteButton">Delete</button>
                 </div>
             </div>
         </div>
-    </div> -->
-
-    <div class="container" id="displayMyMovie">
-
     </div>
     
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>
 
 </html>

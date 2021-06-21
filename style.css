@@ -3,7 +3,6 @@
 }
 body{
     background-color: #040f0f; 
-    /* color: white; */
 }
 a{
     text-decoration: none;
@@ -18,4 +17,16 @@ body > nav > div > div > a{
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
+}
+#displayMyMovie{
+    display:flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+#displayModal{
+    text-align: left;
+    text-overflow: none;
+}
+#modal-content{
+    background-color: #FFFAF1;
 }
