@@ -1,4 +1,5 @@
 const search_results = document.getElementById('search-results')
+const searchButton = document.getElementById('searchButton')
 const modalTitle = document.getElementById('modalTitle')
 const id = document.getElementById('id')
 const title = document.getElementById('title')
@@ -12,14 +13,16 @@ const displayMyMovie = document.getElementById('displayMyMovie')
 const deleteButton = document.getElementById('deleteButton')
 
 window.addEventListener('load',(e)=>{
-    const searchButton = document.getElementById('searchButton')
     searchButton.addEventListener('click', (e)=>{
         const search = document.getElementById('search').value
         getAllMovie(search)
         console.log(search)
-        document.getElementById('search_form').reset()
+        search.innerHTML = ''
     })
 })
+
+//-------แสดงรายชือทั้งหมด-------
+
 function getAllMovie(search){
     fetch(`https://api.jikan.moe/v3/search/anime?q=${search}`, {
         method: 'GET'
@@ -31,8 +34,8 @@ function getAllMovie(search){
         showMovie(data.results);
     })
 }
-function showMovie(data){
-    for(movie of data){
+function showMovie(results){
+    for(movie of results){
         showCard(movie)
     }
 }
@@ -45,11 +48,12 @@ function showCard(movie){
     card.classList.add('mx-3')
     card.setAttribute('style','width: 18rem;')
     card.setAttribute('id',movie.mal_id)
-    card.addEventListener('dblclick',(event)=>{
-        console.log(movie.title)
+    card.addEventListener('dblclick',(e)=>{
+        console.log('กด ' + movie.title)
         let confirmMsg = confirm(`ต้องการเพิ่ม ${movie.title}ใช่ไหม`)
         if(confirmMsg){
             addMovie(movie)
+            display()
         }
     })
     let img = document.createElement('img')
@@ -69,6 +73,11 @@ function showCard(movie){
     card.appendChild(card_body)
     search_results.appendChild(card)
 }
+
+//-------แสดงรายชือทั้งหมด-------
+
+//-------เพิ่มเข้าลิสต์-------
+
 function addMovie(data) {
     let myMovie = {
         id: "632110352",
@@ -105,6 +114,11 @@ function addMyList(myMovie){
         return null
     })
 }
+
+//-------เพิ่มเข้าลิสต์-------
+
+//-------แสดงรายชื่อหนังในลิสต์-------
+
 function hideAll(){
     search_results.style.display='none'
 }
@@ -123,7 +137,7 @@ function displayMyCard(movie){
     card.classList.add('card')
     card.classList.add('bg-dark')
     card.classList.add('text-white')
-    card.classList.add('mt-3')
+    card.classList.add('my-3')
     card.classList.add('mx-3')
     card.setAttribute('style','width: 18rem;')
     card.setAttribute('id',movie.id)
@@ -199,6 +213,11 @@ function showModal(movie){
             }
     })
 }
+
+//-------แสดงรายชื่อหนังในลิสต์-------
+
+//-------ลบหนังในลิสต์-------
+
 function deleteList(id){
     fetch(`https://se104-project-backend.du.r.appspot.com/movie?id=632110352&&movieId=${id}`,{
         method: 'DELETE',
@@ -209,9 +228,12 @@ function deleteList(id){
             throw Error(response.statusText)
         }
     }).then(data=>{
-        alert(`${data.title} is now deleted`)
-        location.reload()
+        displayMyMovie.innerHTML = ''
+        display()
+        // location.reload()
     }).catch(error=>{
         alert('This is not in the database')
     })
 }
+
+//-------ลบหนังในลิสต์-------

@@ -30,3 +30,8 @@ body > nav > div > div > a{
 #modal-content{
     background-color: #FFFAF1;
 }
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
