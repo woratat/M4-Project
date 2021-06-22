@@ -1,5 +1,6 @@
 const search_results = document.getElementById('search-results')
 const searchButton = document.getElementById('searchButton')
+const pages = document.getElementById('pages')
 const modalTitle = document.getElementById('modalTitle')
 const id = document.getElementById('id')
 const title = document.getElementById('title')
@@ -11,20 +12,24 @@ const rated = document.getElementById('rated')
 const image = document.getElementById('image')
 const displayMyMovie = document.getElementById('displayMyMovie')
 const deleteButton = document.getElementById('deleteButton')
+var num = 1
+var test
 
 window.addEventListener('load',(e)=>{
+    hidePages()
     searchButton.addEventListener('click', (e)=>{
         const search = document.getElementById('search').value
-        getAllMovie(search)
+        getAllMovie(search,num)
         console.log(search)
+        test = search
         search.innerHTML = ''
     })
 })
 
 //-------แสดงรายชือทั้งหมด-------
 
-function getAllMovie(search){
-    fetch(`https://api.jikan.moe/v3/search/anime?q=${search}`, {
+function getAllMovie(search,num){
+    fetch(`https://api.jikan.moe/v3/search/anime?q=${search}&page=${num}`, {
         method: 'GET'
     }).then((res) => {
         if (res.status === 200) {
@@ -119,8 +124,12 @@ function addMyList(myMovie){
 
 //-------แสดงรายชื่อหนังในลิสต์-------
 
+function hidePages(){
+    pages.style.display='none'
+}
 function hideAll(){
     search_results.style.display='none'
+    pages.style.display='none'
 }
 document.getElementById('MyList').addEventListener('click',(e)=>{
     display()
@@ -146,15 +155,18 @@ function displayMyCard(movie){
     img.classList.add('card-img-top')
     let card_body = document.createElement('div')
     card_body.classList.add('card-body')
+    card_body.classList.add('d-flex')
+    card_body.classList.add('flex-column')
     let title = document.createElement('h5')
     title.classList.add('card-title')
     title.innerText = movie.title
-    let synop = document.createElement('p')
-    synop.classList.add('card-text')
-    synop.innerHTML = movie.synopsis
+    let score = document.createElement('p')
+    score.innerText = 'Score: '+movie.score
+    score.style.color = '#EEC643'
     let button = document.createElement('button')
     button.classList.add('btn')
     button.classList.add('btn-outline-success')
+    button.classList.add('mt-auto') 
     button.setAttribute('type','button')
     button.setAttribute('id','moreInfo')
     button.setAttribute('data-bs-toggle','modal')
@@ -164,7 +176,7 @@ function displayMyCard(movie){
         getOneCard(movie.id)
     })
     card_body.appendChild(title)
-    card_body.appendChild(synop)
+    card_body.appendChild(score)
     card_body.appendChild(button)
     card.appendChild(img)
     card.appendChild(card_body)
@@ -230,10 +242,32 @@ function deleteList(id){
     }).then(data=>{
         displayMyMovie.innerHTML = ''
         display()
-        // location.reload()
     }).catch(error=>{
         alert('This is not in the database')
     })
 }
 
 //-------ลบหนังในลิสต์-------
+
+//-------เปลี่ยนหน้า-------
+
+document.getElementById('page1').addEventListener('click',(e)=>{
+    num = 1
+    console.log(num)
+    search_results.innerHTML = ''
+    getAllMovie(test,num)
+})
+document.getElementById('page2').addEventListener('click',(e)=>{
+    num = 2
+    console.log(num)
+    search_results.innerHTML = ''
+    getAllMovie(test,num)
+})
+document.getElementById('page3').addEventListener('click',(e)=>{
+    num = 3
+    console.log(num)
+    search_results.innerHTML = ''
+    getAllMovie(test,num)
+})
+
+//-------เปลี่ยนหน้า-------
