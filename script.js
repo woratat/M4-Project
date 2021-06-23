@@ -154,6 +154,7 @@ function showSearchResult(){
     displayMyMovie.style.justifyContent='center'
 }
 document.getElementById('MyList').addEventListener('click',(e)=>{
+    displayMyMovie.innerHTML = ''
     changeColor()
     display()
 })

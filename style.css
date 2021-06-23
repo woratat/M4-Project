@@ -36,6 +36,7 @@ body > nav > div > div > a{
 }
 .modal-content {
 	background-color: #28282B;
+    font-size: large;
 }
 
 #myModal > div > div > div.modal-body, #myModal > div > div > div.modal-header{
@@ -47,8 +48,11 @@ body > nav > div > div > a{
 	border-color: #343434;
 }
 #image{
-    height: 15vw;
+    height: 25vw;
     border-radius: 10px;
+}
+#modalTitle{
+    color: tomato;
 }
 .footer{
     display: flex;
@@ -101,8 +105,12 @@ input:-webkit-autofill:active
     text-align: center;
 }
 #MyList:focus{
-    color: #798759;
+    color: #39FF14;
 }
 #MyHome{
-    color: #798759;
+    color: #39FF14;
+}
+#logo{
+    height: 3rem;
+    margin: 0px 10px;
 }
