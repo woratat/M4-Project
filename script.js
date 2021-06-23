@@ -17,13 +17,24 @@ var test
 
 window.addEventListener('load',(e)=>{
     hidePages()
-    searchButton.addEventListener('click', (e)=>{
-        const search = document.getElementById('search').value
-        getAllMovie(search,num)
-        console.log(search)
-        test = search
-        search.innerHTML = ''
-    })
+})
+searchButton.addEventListener('click', (e)=>{
+    // search_results.innerHTML = ''
+    // displayMyMovie.innerHTML = ''
+    showSearchResult()
+    const search = document.getElementById('search').value
+    getAllMovie(search,num)
+    console.log(search)
+    test = search
+    document.getElementById('search').value = ''
+    showPages()
+})
+document.getElementById('search').addEventListener('keypress',function(event){
+    if(event.keyCode === 13){
+        event.preventDefault()
+        searchButton.click()
+        getAllMovie()
+    }
 })
 
 //-------แสดงรายชือทั้งหมด-------
@@ -40,6 +51,8 @@ function getAllMovie(search,num){
     })
 }
 function showMovie(results){
+    search_results.innerHTML = ''
+    displayMyMovie.innerHTML = ''
     for(movie of results){
         showCard(movie)
     }
@@ -115,6 +128,7 @@ function addMyList(myMovie){
         }
     }).then(data=>{
         alert(`${data.title} is now in your list.`)
+        
     }).catch(error=>{
         return null
     })
@@ -127,11 +141,20 @@ function addMyList(myMovie){
 function hidePages(){
     pages.style.display='none'
 }
+function showPages(){
+    pages.style.display='flex'
+}
 function hideAll(){
     search_results.style.display='none'
     pages.style.display='none'
 }
+function showSearchResult(){
+    search_results.style.display='flex'
+    displayMyMovie.style.flexFlow='row wrap'
+    displayMyMovie.style.justifyContent='center'
+}
 document.getElementById('MyList').addEventListener('click',(e)=>{
+    changeColor()
     display()
 })
 function display(){
@@ -269,5 +292,34 @@ document.getElementById('page3').addEventListener('click',(e)=>{
     search_results.innerHTML = ''
     getAllMovie(test,num)
 })
+document.getElementById('page4').addEventListener('click',(e)=>{
+    num = 4
+    console.log(num)
+    search_results.innerHTML = ''
+    getAllMovie(test,num)
+})
+document.getElementById('page5').addEventListener('click',(e)=>{
+    num = 5
+    console.log(num)
+    search_results.innerHTML = ''
+    getAllMovie(test,num)
+})
+document.getElementById('prev').addEventListener('click',(e)=>{
+    num -= 1
+    console.log(num)
+    search_results.innerHTML = ''
+    getAllMovie(test,num)
+})
+document.getElementById('next').addEventListener('click',(e)=>{
+    num += 1
+    console.log(num)
+    search_results.innerHTML = ''
+    getAllMovie(test,num)
+})
 
 //-------เปลี่ยนหน้า-------
+
+function changeColor(){
+    let home = document.getElementById('MyHome')
+    home.setAttribute('style','color: white;')
+}
