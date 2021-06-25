@@ -69,7 +69,6 @@ function showCard(movie){
         let confirmMsg = confirm(`ต้องการเพิ่ม ${movie.title}ใช่ไหม`)
         if(confirmMsg){
             addMovie(movie)
-            display()
         }
     })
     let img = document.createElement('img')
@@ -123,7 +122,7 @@ function addMyList(myMovie){
         }
     }).then(data=>{
         alert(`${data.title} is now in your list.`)
-        
+        display()
     }).catch(error=>{
         return null
     })
@@ -155,9 +154,6 @@ document.getElementById('MyList').addEventListener('click',(e)=>{
 })
 function display(){
     hideAll()
-    displayMyMovie.style.display='flex'
-    displayMyMovie.style.flexFlow='row wrap'
-    displayMyMovie.style.justifyContent='center'
     getMyMovie()
 }
 function displayMyCard(movie){
@@ -255,14 +251,10 @@ function deleteList(id){
     }).then(response =>{
         if(response.status===200){
             return response.json()
-        }else{
-            throw Error(response.statusText)
         }
     }).then(data=>{
         displayMyMovie.innerHTML = ''
         display()
-    }).catch(error=>{
-        alert('This is not in the database')
     })
 }
 
