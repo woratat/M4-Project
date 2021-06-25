@@ -19,8 +19,6 @@ window.addEventListener('load',(e)=>{
     hidePages()
 })
 searchButton.addEventListener('click', (e)=>{
-    // search_results.innerHTML = ''
-    // displayMyMovie.innerHTML = ''
     showSearchResult()
     const search = document.getElementById('search').value
     getAllMovie(search,num)
@@ -81,12 +79,9 @@ function showCard(movie){
     card_body.classList.add('card-body')
     let title = document.createElement('h5')
     title.classList.add('card-title')
+    title.setAttribute('style','text-align: center;')
     title.innerText = movie.title
-    let synop = document.createElement('p')
-    synop.classList.add('card-text')
-    synop.innerHTML = movie.synopsis
     card_body.appendChild(title)
-    card_body.appendChild(synop)
     card.appendChild(img)
     card.appendChild(card_body)
     search_results.appendChild(card)

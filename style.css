@@ -41,7 +41,6 @@ body > nav > div > div > a{
 
 #myModal > div > div > div.modal-body, #myModal > div > div > div.modal-header{
     color: white;
-
 }
 .modal-header,
 .modal-content, .modal-footer {
@@ -113,4 +112,8 @@ input:-webkit-autofill:active
 #logo{
     height: 3rem;
     margin: 0px 10px;
+}
+#searchButton{
+    background-color: #28a811;
+    border:#28a811;
 }
